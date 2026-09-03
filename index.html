@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyecto Final CSS Essentials — MiniAcad | Academia Cisco CEAC</title>
+  <meta name="description" content="Guía del proyecto final del curso CSS Essentials: construir MiniAcad, una plataforma de cursos accesible para niños menores de 10 años.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+  <a class="salto-contenido" href="#contenido">Saltar al contenido</a>
+
+  <header class="cabecera">
+    <div class="cabecera__interior">
+      <p class="cabecera__marca">Academia Cisco CEAC</p>
+      <button class="menu-boton" type="button" id="menuBoton" aria-expanded="false" aria-controls="indice">
+        <span class="menu-boton__barras" aria-hidden="true"></span>
+        Índice
+      </button>
+    </div>
+  </header>
+
+  <div class="portada">
+    <div class="portada__interior">
+      <p class="portada__curso">CSS Essentials · Cisco Networking Academy</p>
+      <h1 class="portada__titulo">MiniAcad</h1>
+      <p class="portada__bajada">
+        Construya una plataforma de cursos en línea que un niño de siete años pueda usar
+        y que una persona ciega pueda recorrer completa.
+      </p>
+
+      <dl class="ficha">
+        <div class="ficha__par">
+          <dt>Modalidad</dt>
+          <dd>Individual o en parejas</dd>
+        </div>
+        <div class="ficha__par">
+          <dt>Duración</dt>
+          <dd>3 semanas</dd>
+        </div>
+        <div class="ficha__par">
+          <dt>Entrega</dt>
+          <dd>Carpeta comprimida y enlace publicado</dd>
+        </div>
+        <div class="ficha__par">
+          <dt>Valor</dt>
+          <dd>100 puntos</dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+
+  <div class="disposicion">
+
+    <nav class="indice" id="indice" aria-label="Índice de la guía">
+      <p class="indice__titulo">Contenido</p>
+      <ol class="indice__lista">
+        <li><a href="#objetivo">Objetivo</a></li>
+        <li><a href="#descripcion">Descripción de la actividad</a></li>
+        <li><a href="#restricciones">Restricciones</a></li>
+        <li><a href="#css">Requisitos técnicos de CSS</a></li>
+        <li><a href="#accesibilidad">Accesibilidad para personas ciegas</a></li>
+        <li><a href="#archivos">Estructura de archivos</a></li>
+        <li><a href="#ia">Uso de inteligencia artificial</a></li>
+        <li><a href="#entregables">Entregables</a></li>
+        <li><a href="#rubrica">Rúbrica de evaluación</a></li>
+        <li><a href="#recomendaciones">Recomendaciones finales</a></li>
+      </ol>
+    </nav>
+
+    <main class="contenido" id="contenido">
+
+      <!-- 1 -->
+      <section class="seccion" id="objetivo" aria-labelledby="t-objetivo">
+        <span class="seccion__numero" aria-hidden="true">1</span>
+        <h2 class="seccion__titulo" id="t-objetivo">Objetivo</h2>
+        <p>
+          Diseñar y construir un sitio web estático de aprendizaje, inspirado en netacad.com,
+          usando <strong>HTML, CSS y JavaScript</strong>, con apoyo de herramientas de
+          <strong>inteligencia artificial</strong>. El sitio alojará cursos cortos dirigidos a
+          niños menores de 10 años.
+        </p>
+        <p>
+          El propósito es demostrar el dominio de los temas vistos en CSS Essentials: selectores,
+          cascada, modelo de caja, tipografía, color, Flexbox, Grid, diseño responsivo,
+          pseudoclases y transiciones.
+        </p>
+      </section>
+
+      <!-- 2 -->
+      <section class="seccion" id="descripcion" aria-labelledby="t-descripcion">
+        <span class="seccion__numero" aria-hidden="true">2</span>
+        <h2 class="seccion__titulo" id="t-descripcion">Descripción de la actividad</h2>
+        <p>Usted construirá <strong>MiniAcad</strong>, una plataforma de cursos en línea con:</p>
+        <ul>
+          <li>Una <strong>página de inicio</strong> con el catálogo de cursos, similar en estructura a netacad.com.</li>
+          <li>Una <strong>página por cada curso</strong>, dividida en lecciones.</li>
+          <li>Un <strong>encabezado y un pie de página</strong> comunes a todo el sitio.</li>
+        </ul>
+
+        <h3>Cursos obligatorios</h3>
+        <div class="tabla-envoltura">
+          <table class="tabla">
+            <caption>Los cuatro cursos mínimos y su contenido</caption>
+            <thead>
+              <tr>
+                <th scope="col">Curso</th>
+                <th scope="col">Lecciones mínimas</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Aprendo a sumar</th>
+                <td>Qué es sumar · Sumas hasta 10 · Sumas con dibujos</td>
+              </tr>
+              <tr>
+                <th scope="row">Aprendo a dividir</th>
+                <td>Repartir en partes iguales · La división con objetos · Práctica</td>
+              </tr>
+              <tr>
+                <th scope="row">Aprendo a amarrarme los zapatos</th>
+                <td>Partes del cordón · El nudo base · Las dos orejas de conejo</td>
+              </tr>
+              <tr>
+                <th scope="row">Me cuido en internet</th>
+                <td>Mis datos son míos · No hablo con desconocidos · Le cuento a un adulto</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Puede agregar un quinto curso libre. Por ejemplo: «Aprendo los colores»,
+          «Reciclo en casa» o «Cuido mis dientes».
+        </p>
+
+        <h3>Qué debe contener cada lección</h3>
+        <ul>
+          <li>Un <strong>video</strong> incrustado con <code>&lt;iframe&gt;</code> de YouTube o video propio.</li>
+          <li>Al menos <strong>una imagen</strong> ilustrativa con texto alternativo.</li>
+          <li>Una <strong>lectura corta</strong>: máximo 120 palabras, frases simples, letra grande.</li>
+          <li>Un <strong>botón</strong> para avanzar a la siguiente lección.</li>
+        </ul>
+
+        <aside class="nota">
+          <p class="nota__etiqueta">Tenga presente</p>
+          <p>
+            El contenido está dirigido a niños menores de 10 años. Use lenguaje sencillo,
+            oraciones cortas, colores amables y tipografía de al menos 18 píxeles en el cuerpo del texto.
+          </p>
+        </aside>
+      </section>
+
+      <!-- 3 -->
+      <section class="seccion" id="restricciones" aria-labelledby="t-restricciones">
+        <span class="seccion__numero" aria-hidden="true">3</span>
+        <h2 class="seccion__titulo" id="t-restricciones">Restricciones</h2>
+        <ul class="reglas">
+          <li class="regla regla--no">
+            <span class="regla__marca">No permitido</span>
+            Sistema de registro o de inicio de sesión.
+          </li>
+          <li class="regla regla--no">
+            <span class="regla__marca">No permitido</span>
+            Guardar el avance del usuario. Sin base de datos y sin <code>localStorage</code> obligatorio.
+          </li>
+          <li class="regla regla--si">
+            <span class="regla__marca">Sí permitido</span>
+            Frameworks CSS como Bootstrap, Tailwind o Bulma. Si los usa, debe además entregar una hoja
+            de estilos propia (<code>css/estilos.css</code>) donde se evidencien los requisitos del punto 4,
+            y debe poder explicar qué aporta el framework y qué escribió usted.
+          </li>
+          <li class="regla regla--si">
+            <span class="regla__marca">Requisito</span>
+            El sitio debe funcionar abriendo <code>index.html</code> directamente en el navegador.
+          </li>
+          <li class="regla regla--si">
+            <span class="regla__marca">Alcance de JS</span>
+            JavaScript se usa solo para interacción sencilla: menú móvil, acordeones,
+            mostrar u ocultar contenido y un mini quiz sin puntaje guardado.
+          </li>
+        </ul>
+      </section>
+
+      <!-- 4 -->
+      <section class="seccion" id="css" aria-labelledby="t-css">
+        <span class="seccion__numero" aria-hidden="true">4</span>
+        <h2 class="seccion__titulo" id="t-css">Requisitos técnicos de CSS</h2>
+        <p>
+          Debe evidenciar los doce puntos en <strong>su propia hoja de estilos</strong>,
+          no en la del framework. Todos son obligatorios y evaluables.
+        </p>
+        <ol class="lista-requisitos">
+          <li><strong>Hoja de estilos externa</strong> enlazada con <code>&lt;link&gt;</code>. No se acepta CSS en línea salvo casos justificados.</li>
+          <li><strong>Variables CSS</strong> en <code>:root</code> para la paleta y las tipografías.</li>
+          <li><strong>Selectores variados:</strong> de tipo, clase, id, descendiente, hijo directo, agrupados y de atributo.</li>
+          <li><strong>Modelo de caja:</strong> uso correcto de <code>margin</code>, <code>padding</code>, <code>border</code> y <code>box-sizing: border-box</code>.</li>
+          <li><strong>Flexbox</strong> en el encabezado y en la barra de navegación.</li>
+          <li><strong>CSS Grid</strong> en el catálogo de cursos de la página de inicio.</li>
+          <li><strong>Diseño responsivo:</strong> mínimo dos <code>@media</code>, por ejemplo en 768 px y 480 px. Debe verse bien en celular.</li>
+          <li><strong>Pseudoclases:</strong> <code>:hover</code>, <code>:focus</code>, <code>:active</code> y <code>:nth-child()</code>.</li>
+          <li><strong>Transiciones</strong> en botones y tarjetas de curso.</li>
+          <li><strong>Tipografía:</strong> mínimo dos fuentes, una para títulos y otra para texto, con jerarquía clara.</li>
+          <li><strong>Contraste accesible</strong> entre texto y fondo.</li>
+          <li><strong>Código comentado</strong> y ordenado por secciones.</li>
+        </ol>
+      </section>
+
+      <!-- 5 -->
+      <section class="seccion" id="accesibilidad" aria-labelledby="t-accesibilidad">
+        <span class="seccion__numero" aria-hidden="true">5</span>
+        <h2 class="seccion__titulo" id="t-accesibilidad">Accesibilidad para personas ciegas</h2>
+        <p>
+          La plataforma debe poder usarse <strong>completamente con un lector de pantalla</strong>
+          —NVDA, JAWS, VoiceOver o TalkBack— y <strong>solo con el teclado</strong>.
+          Este es un requisito obligatorio, no opcional.
+        </p>
+
+        <h3>5.1 Estructura y semántica</h3>
+        <ol class="lista-requisitos">
+          <li>Declarar el idioma en la etiqueta raíz: <code>&lt;html lang="es"&gt;</code>.</li>
+          <li>Un solo <code>&lt;h1&gt;</code> por página y jerarquía de encabezados sin saltos.</li>
+          <li>Usar etiquetas semánticas: <code>header</code>, <code>nav</code>, <code>main</code>, <code>section</code>, <code>article</code>, <code>footer</code>.</li>
+          <li>Incluir un enlace de «Saltar al contenido» al inicio de cada página, visible al recibir el foco.</li>
+          <li>Marcar las regiones con <code>aria-label</code> cuando haya varias del mismo tipo.</li>
+        </ol>
+
+        <h3>5.2 Texto alternativo y multimedia</h3>
+        <ol class="lista-requisitos" start="6">
+          <li>Toda imagen debe tener <code>alt</code> descriptivo y útil. Las decorativas llevan <code>alt=""</code>.</li>
+          <li>Los videos deben tener subtítulos y, si transmiten información visual esencial, una descripción textual equivalente en la misma lección.</li>
+          <li>El curso «Aprendo a amarrarme los zapatos» debe incluir la explicación paso a paso en texto, no solo en imágenes.</li>
+          <li>Los <code>&lt;iframe&gt;</code> deben llevar atributo <code>title</code>.</li>
+        </ol>
+
+        <h3>5.3 Navegación por teclado</h3>
+        <ol class="lista-requisitos" start="10">
+          <li>Todo elemento interactivo debe ser alcanzable con <kbd>Tab</kbd>, en un orden lógico.</li>
+          <li>El foco debe ser visible: defina <code>:focus-visible</code> con un contorno claro. Nunca use <code>outline: none</code> sin reemplazo.</li>
+          <li>No usar <code>tabindex</code> con valores positivos.</li>
+          <li>Los botones que ejecutan acciones deben ser <code>&lt;button&gt;</code>, no un <code>&lt;div&gt;</code> con <code>onclick</code>.</li>
+        </ol>
+
+        <h3>5.4 Formularios y componentes</h3>
+        <ol class="lista-requisitos" start="14">
+          <li>Todo campo debe tener su <code>&lt;label&gt;</code> asociado con <code>for</code> e <code>id</code>.</li>
+          <li>En el mini quiz, use <code>&lt;fieldset&gt;</code> y <code>&lt;legend&gt;</code>, y anuncie el resultado con <code>aria-live="polite"</code>.</li>
+          <li>Los acordeones y menús desplegables deben usar <code>aria-expanded</code> y <code>aria-controls</code>.</li>
+        </ol>
+
+        <h3>5.5 Color, contraste y texto</h3>
+        <ol class="lista-requisitos" start="17">
+          <li>Contraste mínimo de 4.5:1 en texto normal y 3:1 en texto grande, nivel WCAG AA.</li>
+          <li>La información nunca puede depender solo del color. Además del color, use texto o iconos con etiqueta.</li>
+          <li>Usar unidades relativas (<code>rem</code>, <code>em</code>) para que el texto escale al 200 % sin romper el diseño.</li>
+          <li>Respetar <code>@media (prefers-reduced-motion: reduce)</code> desactivando transiciones y animaciones.</li>
+        </ol>
+
+        <h3>5.6 Verificación obligatoria</h3>
+        <p>Antes de entregar debe realizar y documentar estas cuatro pruebas:</p>
+        <div class="tabla-envoltura">
+          <table class="tabla">
+            <caption>Pruebas de accesibilidad y evidencia que debe adjuntar</caption>
+            <thead>
+              <tr>
+                <th scope="col">Prueba</th>
+                <th scope="col">Herramienta</th>
+                <th scope="col">Evidencia</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Navegar todo el sitio solo con teclado</th>
+                <td>Tecla <kbd>Tab</kbd></td>
+                <td>Captura del foco visible</td>
+              </tr>
+              <tr>
+                <th scope="row">Escuchar una lección completa</th>
+                <td>NVDA (gratuito) o VoiceOver</td>
+                <td>Nota de qué se entendió y qué no</td>
+              </tr>
+              <tr>
+                <th scope="row">Auditoría automática</th>
+                <td>Lighthouse o WAVE</td>
+                <td>Captura del puntaje, mínimo 90</td>
+              </tr>
+              <tr>
+                <th scope="row">Contraste de la paleta</th>
+                <td>WebAIM Contrast Checker</td>
+                <td>Tabla con las relaciones de contraste</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <aside class="nota nota--fuerte">
+          <p class="nota__etiqueta">Criterio de aprobación</p>
+          <p>
+            Si una persona ciega no puede identificar en qué curso está, avanzar entre lecciones
+            y comprender el contenido, el proyecto no cumple.
+          </p>
+        </aside>
+      </section>
+
+      <!-- 6 -->
+      <section class="seccion" id="archivos" aria-labelledby="t-archivos">
+        <span class="seccion__numero" aria-hidden="true">6</span>
+        <h2 class="seccion__titulo" id="t-archivos">Estructura de archivos</h2>
+        <p>Organice el proyecto así. La estructura también se evalúa.</p>
+        <pre class="arbol"><code>miniacad/
+├── index.html
+├── IA.html
+├── cursos/
+│   ├── sumar.html
+│   ├── dividir.html
+│   ├── zapatos.html
+│   └── internet-seguro.html
+├── css/
+│   ├── estilos.css
+│   └── responsivo.css
+├── js/
+│   └── script.js
+├── img/
+│   └── (imágenes de los cursos)
+└── evidencias/
+    └── (capturas de las pruebas de accesibilidad)</code></pre>
+      </section>
+
+      <!-- 7 -->
+      <section class="seccion" id="ia" aria-labelledby="t-ia">
+        <span class="seccion__numero" aria-hidden="true">7</span>
+        <h2 class="seccion__titulo" id="t-ia">Uso de inteligencia artificial</h2>
+        <p>El uso de IA está permitido y es parte de la actividad, bajo estas condiciones:</p>
+        <ul>
+          <li>Entregar un archivo <code>IA.html</code> con mínimo cinco prompts y una breve explicación de qué le aportó cada respuesta.</li>
+          <li>Indicar qué partes del código fueron generadas con IA y cuáles modificó usted.</li>
+          <li>Poder <strong>explicar oralmente cualquier línea de su CSS</strong>. Si no puede explicarla, no la incluya.</li>
+        </ul>
+
+        <h3>Las diez partes de un buen prompt</h3>
+        <p>
+          Un prompt efectivo se arma por bloques. No todos son obligatorios siempre,
+          pero entre más completo, mejor será la respuesta.
+        </p>
+        <div class="tabla-envoltura">
+          <table class="tabla">
+            <caption>Anatomía de un prompt</caption>
+            <thead>
+              <tr>
+                <th scope="col">Parte</th>
+                <th scope="col">Para qué sirve</th>
+                <th scope="col">Ejemplo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Rol</th>
+                <td>Le dice a la IA desde qué perspectiva responder</td>
+                <td>«Actúa como desarrollador web front-end con experiencia en accesibilidad.»</td>
+              </tr>
+              <tr>
+                <th scope="row">Contexto</th>
+                <td>Explica el proyecto y de dónde viene la necesidad</td>
+                <td>«Estoy construyendo un sitio estático de cursos con HTML y CSS puro.»</td>
+              </tr>
+              <tr>
+                <th scope="row">Objetivo</th>
+                <td>Dice qué quiere lograr, en una sola frase</td>
+                <td>«Necesito el CSS del catálogo de la página de inicio.»</td>
+              </tr>
+              <tr>
+                <th scope="row">Público</th>
+                <td>Ajusta el tono, el vocabulario y el diseño</td>
+                <td>«El sitio lo usarán niños menores de 10 años.»</td>
+              </tr>
+              <tr>
+                <th scope="row">Parámetros técnicos</th>
+                <td>Fija las reglas que la IA no puede saltarse</td>
+                <td>«Usar CSS Grid, variables en <code>:root</code>, tipografía mínima de 18 px.»</td>
+              </tr>
+              <tr>
+                <th scope="row">Restricciones</th>
+                <td>Dice qué no debe hacer</td>
+                <td>«Sin CSS en línea y sin librerías externas.»</td>
+              </tr>
+              <tr>
+                <th scope="row">Formato de salida</th>
+                <td>Define cómo quiere recibir la respuesta</td>
+                <td>«Entrégame solo el CSS, comentado por secciones.»</td>
+              </tr>
+              <tr>
+                <th scope="row">Criterio de calidad</th>
+                <td>Le exige a la IA un estándar verificable</td>
+                <td>«El contraste debe cumplir WCAG AA.»</td>
+              </tr>
+              <tr>
+                <th scope="row">Petición de explicación</th>
+                <td>Convierte la respuesta en aprendizaje, no en copia</td>
+                <td>«Explícame para qué sirve <code>auto-fit</code> en este caso.»</td>
+              </tr>
+              <tr>
+                <th scope="row">Iteración</th>
+                <td>Refina la respuesta anterior en lugar de empezar de cero</td>
+                <td>«Ahora hazlo responsivo para pantallas de 480 px.»</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="formula">
+          <p class="formula__etiqueta">Fórmula corta para recordar</p>
+          <p class="formula__texto">
+            Actúa como <span class="hueco">rol</span>.
+            Contexto: <span class="hueco">proyecto</span>.
+            Necesito <span class="hueco">objetivo</span> para <span class="hueco">público</span>.
+            Debe cumplir: <span class="hueco">parámetros</span>.
+            No uses <span class="hueco">restricciones</span>.
+            Entrégalo como <span class="hueco">formato</span> y explícame <span class="hueco">duda concreta</span>.
+          </p>
+        </div>
+
+        <h3>Ejemplo de prompt bien formulado</h3>
+        <blockquote class="prompt">
+          <p>
+            Actúa como desarrollador web front-end. Estoy construyendo un sitio estático de cursos
+            para niños menores de 10 años, con HTML y CSS puro. Necesito el CSS del catálogo de la
+            página de inicio: una cuadrícula de cuatro tarjetas de curso, cada una con imagen,
+            título y una frase corta. Requisitos: usar CSS Grid con
+            <code>repeat(auto-fit, minmax(250px, 1fr))</code>, definir la paleta con variables CSS
+            en <code>:root</code> con colores alegres pero de buen contraste, aplicar
+            <code>transition</code> y efecto <code>:hover</code> que eleve la tarjeta, y tipografía
+            de mínimo 18 px. Entrégame solo el CSS, comentado por secciones, y explícame para qué
+            sirve <code>auto-fit</code> en este caso.
+          </p>
+        </blockquote>
+        <p>
+          <strong>Por qué funciona:</strong> define el rol, el contexto, el público, la restricción
+          técnica, el resultado esperado y pide una explicación. Un prompt como «hazme un CSS bonito
+          para mi página» no cumple con la actividad.
+        </p>
+
+        <h3>Formato del archivo IA.html</h3>
+        <p>
+          Como es un archivo HTML, debe ser parte del sitio: enlazado desde el pie de página,
+          con la misma hoja de estilos y los registros en una <code>&lt;table&gt;</code>.
+          Para cada prompt registre cuatro campos: el <strong>prompt</strong> exacto que escribió,
+          la <strong>herramienta</strong> que usó, <strong>qué obtuvo</strong> y
+          <strong>qué modificó</strong> usted del código entregado.
+        </p>
+      </section>
+
+      <!-- 8 -->
+      <section class="seccion" id="entregables" aria-labelledby="t-entregables">
+        <span class="seccion__numero" aria-hidden="true">8</span>
+        <h2 class="seccion__titulo" id="t-entregables">Entregables</h2>
+        <ol class="lista-requisitos">
+          <li>Carpeta comprimida <code>MiniAcad_Apellido.zip</code> con el proyecto completo.</li>
+          <li>Archivo <code>IA.html</code> con la documentación de prompts.</li>
+          <li>Carpeta <code>evidencias/</code> con las capturas de las cuatro pruebas del punto 5.6.</li>
+          <li>Sitio publicado en GitHub Pages, u otro servicio gratuito, y enlace entregado.</li>
+          <li>
+            <strong>Sustentación</strong> de cinco minutos: navegación por el sitio y explicación de
+            tres decisiones de diseño CSS. Una parte se hará con la pantalla apagada o de espaldas
+            al monitor, usando solo el lector de pantalla.
+          </li>
+        </ol>
+
+        <h3>Cómo publicar el sitio</h3>
+        <ol class="pasos">
+          <li>Cree una cuenta en GitHub.</li>
+          <li>Cree un repositorio <strong>público</strong>.</li>
+          <li>Suba la carpeta del proyecto, con <code>index.html</code> en la raíz.</li>
+          <li>Entre a <strong>Settings → Pages</strong>.</li>
+          <li>En «Source» elija <em>Deploy from a branch</em> y seleccione la rama <code>main</code> con carpeta <code>/root</code>.</li>
+          <li>Guarde y espere unos minutos. Su sitio quedará en <code>https://usuario.github.io/nombre-repositorio/</code></li>
+        </ol>
+
+        <h4 class="mini-titulo">Videos y guías de apoyo</h4>
+        <ul class="recursos">
+          <li>
+            <a href="https://www.youtube.com/watch?v=IrNWFvV8szA" rel="noopener">Video: Cómo crear tu Web GRATIS con GitHub Pages, paso a paso</a>
+            <span class="recursos__meta">YouTube · 2023</span>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/watch?v=mCLWlVPziHA" rel="noopener">Video: Sube tu Página Web a GitHub Pages en 5 minutos</a>
+            <span class="recursos__meta">YouTube · 2025</span>
+          </li>
+          <li>
+            <a href="https://docs.github.com/es/pages/quickstart" rel="noopener">Guía oficial de GitHub en español</a>
+            <span class="recursos__meta">docs.github.com</span>
+          </li>
+          <li>
+            <a href="https://developer.mozilla.org/es/docs/Learn/Common_questions/Using_Github_pages" rel="noopener">Cómo usar GitHub Pages</a>
+            <span class="recursos__meta">MDN Web Docs</span>
+          </li>
+        </ul>
+      </section>
+
+      <!-- 9 -->
+      <section class="seccion" id="rubrica" aria-labelledby="t-rubrica">
+        <span class="seccion__numero" aria-hidden="true">9</span>
+        <h2 class="seccion__titulo" id="t-rubrica">Rúbrica de evaluación</h2>
+        <div class="tabla-envoltura">
+          <table class="tabla tabla--rubrica">
+            <caption>Distribución de los 100 puntos del proyecto</caption>
+            <thead>
+              <tr>
+                <th scope="col">Criterio</th>
+                <th scope="col">Qué se revisa</th>
+                <th scope="col" class="num">Puntos</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Estructura HTML</th>
+                <td>Semántica correcta, etiquetas apropiadas, validación sin errores</td>
+                <td class="num">10</td>
+              </tr>
+              <tr>
+                <th scope="row">Cursos y contenido</th>
+                <td>Los cuatro cursos completos, con video, imagen y lectura por lección</td>
+                <td class="num">15</td>
+              </tr>
+              <tr>
+                <th scope="row">Pertinencia infantil</th>
+                <td>Lenguaje, colores y tipografía adecuados para menores de 10 años</td>
+                <td class="num">10</td>
+              </tr>
+              <tr>
+                <th scope="row">Accesibilidad</th>
+                <td>Lector de pantalla, teclado, <code>alt</code>, ARIA, contraste y pruebas documentadas</td>
+                <td class="num">15</td>
+              </tr>
+              <tr>
+                <th scope="row">Flexbox y Grid</th>
+                <td>Uso correcto y justificado en las secciones indicadas</td>
+                <td class="num">10</td>
+              </tr>
+              <tr>
+                <th scope="row">Diseño responsivo</th>
+                <td>Funciona en celular, tableta y escritorio</td>
+                <td class="num">10</td>
+              </tr>
+              <tr>
+                <th scope="row">Selectores y variables</th>
+                <td>Variedad de selectores y uso de variables CSS</td>
+                <td class="num">10</td>
+              </tr>
+              <tr>
+                <th scope="row">Interactividad</th>
+                <td>Pseudoclases, transiciones y JavaScript funcional</td>
+                <td class="num">5</td>
+              </tr>
+              <tr>
+                <th scope="row">Documentación de IA</th>
+                <td>Archivo <code>IA.html</code> completo y honesto</td>
+                <td class="num">5</td>
+              </tr>
+              <tr>
+                <th scope="row">Sustentación</th>
+                <td>Claridad al explicar el código y las decisiones de diseño</td>
+                <td class="num">10</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th scope="row" colspan="2">Total</th>
+                <td class="num">100</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </section>
+
+      <!-- 10 -->
+      <section class="seccion" id="recomendaciones" aria-labelledby="t-recomendaciones">
+        <span class="seccion__numero" aria-hidden="true">11</span>
+        <h2 class="seccion__titulo" id="t-recomendaciones">Recomendaciones finales</h2>
+        <ul class="consejos">
+          <li>Empiece por el HTML de todas las páginas antes de escribir CSS.</li>
+          <li>Defina la paleta de colores desde el primer día y no la cambie a mitad del proyecto.</li>
+          <li>Pruebe el sitio en un celular real, no solo en el inspector del navegador.</li>
+          <li>Valide su HTML en validator.w3.org y su CSS en jigsaw.w3.org/css-validator</li>
+          <li>Recuerde que el usuario final es un niño: si un menú necesita explicación, está mal diseñado.</li>
+        </ul>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="pie">
+    <div class="pie__interior">
+      <p class="pie__linea">Proyecto final · CSS Essentials · Cisco Networking Academy</p>
+      <p class="pie__linea">Academia Cisco CEAC — Colegio Esmeralda Arboleda Cadavid, Bosa, Bogotá</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,876 @@
+/* =========================================================
+   MiniAcad — Guía del proyecto final de CSS Essentials
+   Hoja de estilos principal
+   ---------------------------------------------------------
+   Índice
+   1. Variables y ajustes base
+   2. Accesibilidad (salto de contenido y foco)
+   3. Cabecera
+   4. Portada
+   5. Disposición general e índice lateral
+   6. Secciones y tipografía del contenido
+   7. Componentes: listas, reglas, notas, fórmula, prompt
+   8. Tablas
+   9. Recursos, semanas y consejos
+  10. Pie de página
+  11. Responsivo
+  12. Preferencias del sistema e impresión
+   ========================================================= */
+
+
+/* =========================================================
+   1. Variables y ajustes base
+   ========================================================= */
+
+:root {
+  /* Paleta: cuaderno cuadriculado escolar */
+  --papel:       #FCFBF7;
+  --papel-hondo: #F3F1E9;
+  --cuadricula:  #DCE4EC;
+  --tinta:       #16283D;
+  --grafito:     #55606E;
+  --margen:      #A93226;
+  --resaltador:  #FFE7A0;
+
+  /* Tipografías */
+  --fuente-titulos: "Bricolage Grotesque", "Trebuchet MS", sans-serif;
+  --fuente-texto:   "Atkinson Hyperlegible", Verdana, sans-serif;
+  --fuente-codigo:  "JetBrains Mono", "Consolas", monospace;
+
+  /* Medidas */
+  --paso: 1.5rem;
+  --ancho-lectura: 68ch;
+  --radio: 3px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  margin: 0;
+  font-family: var(--fuente-texto);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--tinta);
+  background-color: var(--papel);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+code,
+kbd,
+pre {
+  font-family: var(--fuente-codigo);
+  font-size: 0.9em;
+}
+
+code {
+  background-color: var(--papel-hondo);
+  border: 1px solid var(--cuadricula);
+  border-radius: var(--radio);
+  padding: 0.08em 0.35em;
+}
+
+kbd {
+  background-color: var(--tinta);
+  color: var(--papel);
+  border-radius: var(--radio);
+  padding: 0.1em 0.45em;
+}
+
+a {
+  color: var(--tinta);
+  text-decoration-color: var(--margen);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  transition: color 0.15s ease;
+}
+
+a:hover {
+  color: var(--margen);
+}
+
+
+/* =========================================================
+   2. Accesibilidad: salto de contenido y foco visible
+   ========================================================= */
+
+.salto-contenido {
+  position: absolute;
+  left: 1rem;
+  top: -100px;
+  z-index: 100;
+  background-color: var(--tinta);
+  color: var(--papel);
+  padding: 0.7rem 1.2rem;
+  text-decoration: none;
+  border-radius: 0 0 var(--radio) var(--radio);
+}
+
+.salto-contenido:focus {
+  top: 0;
+  color: var(--papel);
+}
+
+/* Un solo contorno de foco para todo el sitio */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--margen);
+  outline-offset: 3px;
+  border-radius: var(--radio);
+}
+
+
+/* =========================================================
+   3. Cabecera
+   ========================================================= */
+
+.cabecera {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background-color: var(--tinta);
+  color: var(--papel);
+}
+
+.cabecera__interior {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0.75rem 1.5rem;
+
+  /* Flexbox en el encabezado */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.cabecera__marca {
+  margin: 0;
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+}
+
+.menu-boton {
+  display: none;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--fuente-texto);
+  font-size: 1rem;
+  color: var(--papel);
+  background-color: transparent;
+  border: 2px solid rgba(252, 251, 247, 0.45);
+  border-radius: var(--radio);
+  padding: 0.4rem 0.85rem;
+  cursor: pointer;
+}
+
+.menu-boton__barras,
+.menu-boton__barras::before,
+.menu-boton__barras::after {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background-color: currentColor;
+}
+
+.menu-boton__barras {
+  position: relative;
+}
+
+.menu-boton__barras::before,
+.menu-boton__barras::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.menu-boton__barras::before { top: -6px; }
+.menu-boton__barras::after  { top: 6px; }
+
+
+/* =========================================================
+   4. Portada
+   ========================================================= */
+
+.portada {
+  border-bottom: 1px solid var(--cuadricula);
+  background-color: rgba(252, 251, 247, 0.92);
+}
+
+.portada__interior {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem 2.75rem;
+}
+
+.portada__curso {
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
+  color: var(--grafito);
+}
+
+.portada__titulo {
+  font-family: var(--fuente-titulos);
+  font-weight: 800;
+  font-size: clamp(3rem, 12vw, 7rem);
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  margin: 0 0 1rem;
+
+  /* El subrayado rojo del cuaderno, bajo el título */
+  border-bottom: 4px solid var(--margen);
+  padding-bottom: 0.15em;
+  display: inline-block;
+}
+
+.portada__bajada {
+  max-width: 46ch;
+  font-size: 1.2rem;
+  margin: 0 0 2.25rem;
+}
+
+.ficha {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 1px;
+  margin: 0;
+  background-color: var(--cuadricula);
+  border: 1px solid var(--cuadricula);
+}
+
+.ficha__par {
+  background-color: var(--papel);
+  padding: 0.9rem 1.1rem;
+}
+
+.ficha dt {
+  font-size: 0.85rem;
+  color: var(--grafito);
+  margin-bottom: 0.15rem;
+}
+
+.ficha dd {
+  margin: 0;
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  font-size: 1.05rem;
+  line-height: 1.35;
+}
+
+
+/* =========================================================
+   5. Disposición general e índice lateral
+   ========================================================= */
+
+.disposicion {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+
+  /* Grid de dos columnas: índice fijo + contenido flexible */
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 3.5rem;
+  align-items: start;
+}
+
+.indice {
+  position: sticky;
+  top: 5rem;
+  padding: 2.5rem 0;
+}
+
+.indice__titulo {
+  margin: 0 0 0.75rem;
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--grafito);
+}
+
+.indice__lista {
+  list-style: none;
+  counter-reset: toc;
+  margin: 0;
+  padding: 0;
+  border-left: 2px solid var(--cuadricula);
+}
+
+.indice__lista > li {
+  counter-increment: toc;
+}
+
+.indice__lista a {
+  display: block;
+  padding: 0.3rem 0 0.3rem 0.85rem;
+  margin-left: -2px;
+  border-left: 2px solid transparent;
+  font-size: 0.94rem;
+  line-height: 1.35;
+  text-decoration: none;
+  color: var(--grafito);
+}
+
+.indice__lista a::before {
+  content: counter(toc) ". ";
+  color: var(--cuadricula);
+}
+
+.indice__lista a:hover {
+  color: var(--tinta);
+}
+
+/* El apartado que se está leyendo: marcado con color, peso y barra roja */
+.indice__lista a[aria-current="true"] {
+  color: var(--margen);
+  font-weight: 700;
+  border-left-color: var(--margen);
+}
+
+.indice__lista a[aria-current="true"]::before {
+  color: var(--margen);
+}
+
+
+/* =========================================================
+   6. Secciones y tipografía del contenido
+   ========================================================= */
+
+.contenido {
+  padding: 2.5rem 0 4rem;
+  max-width: var(--ancho-lectura);
+}
+
+.seccion {
+  position: relative;
+  padding: 2.5rem 0 2.75rem 2.5rem;
+  border-left: 2px solid var(--margen);
+}
+
+.seccion + .seccion {
+  border-top: 1px solid var(--cuadricula);
+}
+
+/* Número colgado en el margen rojo, como en un cuaderno */
+.seccion__numero {
+  position: absolute;
+  left: 0;
+  top: 2.5rem;
+  transform: translateX(-50%);
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
+  background-color: var(--margen);
+  color: var(--papel);
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  font-size: 0.95rem;
+  border-radius: 50%;
+}
+
+.seccion__titulo {
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 4vw, 2.15rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0 0 1rem;
+}
+
+.seccion h3 {
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin: 2.25rem 0 0.75rem;
+}
+
+.seccion h4 {
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  font-size: 1.02rem;
+  margin: 2rem 0 0.6rem;
+}
+
+.seccion p {
+  margin: 0 0 1rem;
+}
+
+.seccion ul,
+.seccion ol {
+  margin: 0 0 1.25rem;
+  padding-left: 1.35rem;
+}
+
+.seccion li {
+  margin-bottom: 0.5rem;
+}
+
+
+/* =========================================================
+   7. Componentes
+   ========================================================= */
+
+/* --- Listas numeradas de requisitos --- */
+.lista-requisitos {
+  list-style: decimal;
+}
+
+.lista-requisitos > li::marker {
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  color: var(--margen);
+}
+
+/* --- Reglas: qué se permite y qué no --- */
+.reglas {
+  list-style: none;
+  padding-left: 0;
+}
+
+.regla {
+  padding: 0.85rem 1rem 0.85rem 1.1rem;
+  margin-bottom: 0.65rem;
+  background-color: var(--papel);
+  border: 1px solid var(--cuadricula);
+  border-left-width: 5px;
+}
+
+.regla--no { border-left-color: var(--margen); }
+.regla--si { border-left-color: var(--tinta); }
+
+/* La etiqueta de texto evita que la información dependa solo del color */
+.regla__marca {
+  display: block;
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  font-size: 0.82rem;
+  margin-bottom: 0.15rem;
+}
+
+.regla--no .regla__marca { color: var(--margen); }
+.regla--si .regla__marca { color: var(--tinta); }
+
+/* --- Notas al margen --- */
+.nota {
+  background-color: var(--papel-hondo);
+  border: 1px solid var(--cuadricula);
+  padding: 1.1rem 1.25rem;
+  margin: 1.75rem 0;
+}
+
+.nota__etiqueta {
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--grafito);
+  margin: 0 0 0.35rem;
+}
+
+.nota p:last-child {
+  margin-bottom: 0;
+}
+
+.nota--fuerte {
+  background-color: var(--resaltador);
+  border-color: #E4C56A;
+}
+
+.nota--fuerte .nota__etiqueta {
+  color: var(--margen);
+}
+
+/* --- Fórmula del prompt --- */
+.formula {
+  border: 2px dashed var(--cuadricula);
+  padding: 1.25rem;
+  margin: 1.75rem 0;
+}
+
+.formula__etiqueta {
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--grafito);
+  margin: 0 0 0.5rem;
+}
+
+.formula__texto {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 2;
+}
+
+.hueco {
+  background-color: var(--resaltador);
+  border-bottom: 2px solid var(--margen);
+  padding: 0.1em 0.5em;
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+}
+
+/* --- Prompt de ejemplo --- */
+.prompt {
+  margin: 1.5rem 0;
+  padding: 1.25rem 1.4rem;
+  background-color: var(--tinta);
+  color: var(--papel);
+  border-radius: var(--radio);
+}
+
+.prompt p {
+  margin: 0;
+}
+
+.prompt code {
+  background-color: rgba(252, 251, 247, 0.14);
+  border-color: rgba(252, 251, 247, 0.3);
+  color: var(--papel);
+}
+
+/* --- Árbol de archivos --- */
+.arbol {
+  overflow-x: auto;
+  background-color: var(--tinta);
+  color: var(--papel);
+  padding: 1.25rem 1.4rem;
+  border-radius: var(--radio);
+  line-height: 1.6;
+}
+
+.arbol code {
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  color: inherit;
+}
+
+
+/* =========================================================
+   8. Tablas
+   ========================================================= */
+
+.tabla-envoltura {
+  overflow-x: auto;
+  margin: 1.25rem 0 1.75rem;
+  border: 1px solid var(--cuadricula);
+}
+
+.tabla {
+  width: 100%;
+  min-width: 32rem;
+  border-collapse: collapse;
+  background-color: var(--papel);
+  font-size: 0.98rem;
+}
+
+.tabla caption {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  font-size: 0.88rem;
+  color: var(--grafito);
+  background-color: var(--papel-hondo);
+  border-bottom: 1px solid var(--cuadricula);
+}
+
+.tabla th,
+.tabla td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid var(--cuadricula);
+}
+
+.tabla thead th {
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  font-size: 0.9rem;
+  background-color: var(--tinta);
+  color: var(--papel);
+  border-bottom: 0;
+}
+
+.tabla tbody th {
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+}
+
+/* Filas alternas para seguir la lectura en tablas largas */
+.tabla tbody tr:nth-child(even) {
+  background-color: var(--papel-hondo);
+}
+
+.tabla .num {
+  text-align: right;
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.tabla tfoot th,
+.tabla tfoot td {
+  background-color: var(--resaltador);
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  border-bottom: 0;
+  border-top: 2px solid var(--tinta);
+}
+
+
+/* =========================================================
+   9. Recursos, pasos, semanas y consejos
+   ========================================================= */
+
+.pasos > li {
+  margin-bottom: 0.6rem;
+}
+
+.pasos > li::marker {
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  color: var(--margen);
+}
+
+.mini-titulo {
+  color: var(--grafito);
+}
+
+.recursos {
+  list-style: none;
+  padding-left: 0;
+}
+
+.recursos > li {
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--cuadricula);
+}
+
+.recursos > li:first-child {
+  border-top: 1px solid var(--cuadricula);
+}
+
+.recursos__meta {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--grafito);
+}
+
+.semanas {
+  list-style: none;
+  padding-left: 0;
+}
+
+.semana {
+  padding: 1rem 0 1rem 1.1rem;
+  border-left: 4px solid var(--cuadricula);
+  margin-bottom: 0.4rem;
+}
+
+.semana:nth-child(1) { border-left-color: var(--cuadricula); }
+.semana:nth-child(2) { border-left-color: #A8BCCB; }
+.semana:nth-child(3) { border-left-color: var(--margen); }
+
+.semana__rotulo {
+  font-family: var(--fuente-titulos);
+  font-weight: 800;
+  font-size: 1.05rem;
+  margin: 0 0 0.2rem;
+}
+
+.semana p:last-child {
+  margin-bottom: 0;
+}
+
+.consejos {
+  list-style: none;
+  padding-left: 0;
+}
+
+.consejos > li {
+  padding-left: 1.6rem;
+  position: relative;
+  margin-bottom: 0.8rem;
+}
+
+.consejos > li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--margen);
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   10. Pie de página
+   ========================================================= */
+
+.pie {
+  background-color: var(--tinta);
+  color: var(--papel);
+  margin-top: 2rem;
+}
+
+.pie__interior {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 2.25rem 1.5rem;
+}
+
+.pie__linea {
+  margin: 0 0 0.3rem;
+  font-size: 0.94rem;
+}
+
+.pie__linea:last-child {
+  margin-bottom: 0;
+  color: #B9C6D4;
+}
+
+
+/* =========================================================
+   11. Responsivo
+   ========================================================= */
+
+/* Tabletas y pantallas medianas */
+@media (max-width: 900px) {
+
+  .disposicion {
+    display: block;
+    padding: 0 1.25rem;
+  }
+
+  .menu-boton {
+    display: inline-flex;
+  }
+
+  /* El índice se oculta y se abre desde el botón de la cabecera */
+  .indice {
+    display: none;
+    position: static;
+    padding: 1.5rem 0 0.5rem;
+  }
+
+  .indice.esta-abierto {
+    display: block;
+  }
+
+  .contenido {
+    max-width: none;
+  }
+
+  .seccion {
+    padding-left: 1.75rem;
+  }
+
+  .seccion__numero {
+    transform: translateX(-50%);
+    width: 1.75rem;
+    height: 1.75rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* Celulares */
+@media (max-width: 480px) {
+
+  body {
+    font-size: 1.02rem;
+  }
+
+  .portada__interior {
+    padding: 2.25rem 1.25rem 2rem;
+  }
+
+  .portada__bajada {
+    font-size: 1.08rem;
+  }
+
+  .seccion {
+    padding: 2rem 0 2.25rem 1.25rem;
+  }
+
+  .seccion__numero {
+    top: 2rem;
+  }
+
+  .formula__texto {
+    line-height: 2.2;
+  }
+
+  .prompt,
+  .arbol {
+    padding: 1rem;
+  }
+}
+
+
+/* =========================================================
+   12. Preferencias del sistema e impresión
+   ========================================================= */
+
+/* Respeta a quien pide menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* Refuerza los bordes cuando el sistema pide más contraste */
+@media (prefers-contrast: more) {
+  body {
+    background-image: none;
+  }
+
+  .tabla,
+  .nota,
+  .regla,
+  .tabla-envoltura {
+    border-color: var(--tinta);
+  }
+}
+
+@media print {
+  body {
+    background-image: none;
+    font-size: 11pt;
+  }
+
+  .cabecera,
+  .indice,
+  .menu-boton,
+  .salto-contenido {
+    display: none;
+  }
+
+  .disposicion {
+    display: block;
+  }
+
+  .seccion {
+    break-inside: avoid;
+  }
+}
